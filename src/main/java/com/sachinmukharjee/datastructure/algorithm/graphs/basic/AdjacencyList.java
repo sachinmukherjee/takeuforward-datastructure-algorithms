@@ -1,0 +1,34 @@
+package com.sachinmukharjee.datastructure.algorithm.graphs.basic;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class AdjacencyList {
+
+  public static void main(String[] args) {
+
+    // Taking the input
+    Scanner scan = new Scanner(System.in);
+    int nodes = scan.nextInt();
+    int edges = scan.nextInt();
+
+    // adjacency list for undirected graph
+    List<List<Integer>> matrix = new ArrayList<>();
+
+    for (int i = 0; i <= nodes; i++) {
+      matrix.add(new ArrayList<>());
+    }
+
+    // Add the edges to the matrix
+    for (int i = 0; i < edges; i++) {
+      int u = scan.nextInt();
+      int v = scan.nextInt();
+
+      matrix.get(u).add(v);
+      matrix.get(v).add(u);
+    }
+
+    scan.close();
+  }
+}
