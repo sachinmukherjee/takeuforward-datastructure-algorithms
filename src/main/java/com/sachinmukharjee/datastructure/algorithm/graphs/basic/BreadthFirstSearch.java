@@ -11,7 +11,7 @@ Assuming Directed Graph
 public class BreadthFirstSearch {
 
   private int nodes;
-  private List<Integer> adjList[];
+  private List<Integer>[] adjList;
 
   public BreadthFirstSearch(int nodes) {
     this.nodes = nodes;
@@ -40,17 +40,26 @@ public class BreadthFirstSearch {
    */
   public void bfsUtils(int startNode, boolean[] visited) {
     Queue<Integer> queue = new LinkedList<>();
+    // Push the starting node
     queue.add(startNode);
 
+    // Loop until the queue is empty
     while (!queue.isEmpty()) {
+      // Pop the top node
       int node = queue.poll();
+      // If the node is not visited
       if (!visited[node]) {
+        // Mark the node as visited
         visited[node] = true;
       }
       System.out.print(node + " ");
+      // Iterate over the adjacent nodes
       for (int neighbourNode : adjList[node]) {
+        // If the neighbour node is not visited
         if (!visited[neighbourNode]) {
+          // Push the neighbour node
           queue.add(neighbourNode);
+          // Mark the neighbour node as visited
           visited[neighbourNode] = true;
         }
       }

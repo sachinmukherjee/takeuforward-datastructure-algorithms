@@ -10,7 +10,7 @@ Assuming Directed Graph
 public class DepthFirstSearch {
 
   private int nodes; // Number of nodes
-  private List<Integer> adjList[]; // Adjacency list
+  private List<Integer>[] adjList; // Adjacency list
 
   public DepthFirstSearch(int nodes) {
     this.nodes = nodes;
@@ -38,17 +38,26 @@ public class DepthFirstSearch {
    */
   private void dsfUtils(int startNode, boolean[] visited) {
     Stack<Integer> stack = new Stack<>();
+    // Push the starting node
     stack.push(startNode);
 
+    // Loop until the stack is empty
     while (!stack.isEmpty()) {
+      // Pop the top node
       int node = stack.pop();
+      // If the node is not visited
       if (!visited[node]) {
+        // Mark the node as visited
         visited[node] = true;
+        // Print the node
         System.out.print(node + " ");
       }
 
+      // Iterate over the adjacent nodes
       for (int neighbourNode : adjList[node]) {
+        // If the neighbour node is not visited
         if (!visited[neighbourNode]) {
+          // Push the neighbour node
           stack.push(neighbourNode);
         }
       }
